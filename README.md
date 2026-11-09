@@ -2,7 +2,7 @@
 
 See what a job role needs — compare it to your CV or skills — and get a study plan with trusted books, courses, certifications, and interview prep.
 
-**Live:** [https://getbeacon.duckdns.org](https://getbeacon.duckdns.org)
+**Live:** [https://lernyra.duckdns.org](https://lernyra.duckdns.org)
 
 ## Stack
 
@@ -29,13 +29,13 @@ Or Docker (rebuild to pick up code changes): `make up` → http://localhost:8000
 
 Push to `main` builds and deploys automatically. See [deploy/README.md](deploy/README.md).
 
-Public hostname: `getbeacon.duckdns.org` (SEO canonical; brand is Lernyra). Older DuckDNS names (`getmedeina`, `pathquire`, `getcast`) redirect permanently.
+Public hostname: `lernyra.duckdns.org` (SEO canonical). Older DuckDNS names (`getbeacon`, `getmedeina`, `pathquire`, `getcast`) redirect permanently.
 
 ## SEO
 
 - Canonical + Open Graph / Twitter meta on the homepage
 - `/sitemap.xml` and `/robots.txt`
-- Indexable role guides at `/roles/{slug}` (e.g. [/roles/python-developer](https://getbeacon.duckdns.org/roles/python-developer))
+- Indexable role guides at `/roles/{slug}` (e.g. [/roles/python-developer](https://lernyra.duckdns.org/roles/python-developer))
 - Google Search Console HTML-file verification via `/google….html`
 
 ## MVP features

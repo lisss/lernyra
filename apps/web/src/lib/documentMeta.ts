@@ -1,4 +1,4 @@
-const SITE = 'https://getbeacon.duckdns.org'
+const SITE = 'https://lernyra.duckdns.org'
 
 export function setDocumentMeta({
   title,

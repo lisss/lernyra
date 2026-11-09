@@ -5,7 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ENV_FILE="$ROOT/deploy/.provisioned.env"
 KEY_PATH="${KEY_PATH:-$HOME/.ssh/jobify-ec2}"
 
-: "${DUCKDNS_SUBDOMAIN:?set DUCKDNS_SUBDOMAIN (e.g. getbeacon)}"
+: "${DUCKDNS_SUBDOMAIN:?set DUCKDNS_SUBDOMAIN (e.g. lernyra)}"
 : "${DUCKDNS_TOKEN:?set DUCKDNS_TOKEN}"
 
 if [[ ! -f "$ENV_FILE" ]]; then

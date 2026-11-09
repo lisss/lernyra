@@ -1,10 +1,14 @@
-# Canonical hostname (SEO). Set DOMAIN in .env, e.g. getbeacon.duckdns.org
+# Canonical hostname (SEO). Set DOMAIN in .env, e.g. lernyra.duckdns.org
 {$DOMAIN} {
 	encode gzip
 	reverse_proxy api:8000
 }
 
 # Previous DuckDNS names → canonical (only names that still resolve)
+getbeacon.duckdns.org {
+	redir https://{$DOMAIN}{uri} permanent
+}
+
 getmedeina.duckdns.org {
 	redir https://{$DOMAIN}{uri} permanent
 }
