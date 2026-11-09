@@ -18,7 +18,7 @@ from app.services.jobs import (
     seniority_rank,
 )
 
-USER_AGENT = "beacon/0.1 (+local; job-aggregator)"
+USER_AGENT = "lernyra/0.1 (+local; job-aggregator)"
 
 
 def _tokens(query: str) -> list[str]:

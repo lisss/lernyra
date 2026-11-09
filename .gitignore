@@ -38,7 +38,7 @@ coverage/
 *.log
 Uploads/
 apps/api/uploads/
-apps/api/beacon.db
+apps/api/lernyra.db
 apps/api/static/
 *.db
 deploy/.provisioned.env

@@ -15,7 +15,7 @@ apps/web-next-backup
 
 # Local DBs & uploads
 *.db
-**/beacon.db
+**/lernyra.db
 apps/api/uploads
 uploads
 

@@ -34,8 +34,8 @@ export function TodoPage() {
 
   useEffect(() => {
     setDocumentMeta({
-      title: 'Learning list | Beacon',
-      description: 'Your saved Beacon study materials — books, courses, and interview prep.',
+      title: 'Learning list | Lernyra',
+      description: 'Your saved Lernyra study materials — books, courses, and interview prep.',
       path: '/learning-list',
       robots: 'noindex, nofollow',
     })
@@ -44,8 +44,8 @@ export function TodoPage() {
   useEffect(() => {
     void reload()
     const sync = () => setItems(listTodoLocal())
-    window.addEventListener('beacon-todo-changed', sync)
-    return () => window.removeEventListener('beacon-todo-changed', sync)
+    window.addEventListener('lernyra-todo-changed', sync)
+    return () => window.removeEventListener('lernyra-todo-changed', sync)
   }, [])
 
   async function onRemove(url: string) {

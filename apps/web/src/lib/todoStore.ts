@@ -1,6 +1,6 @@
 import type { FeedbackItem } from '@/lib/api'
 
-const TODO_KEY = 'beacon.todo.v1'
+const TODO_KEY = 'lernyra.todo.v1'
 
 export type TodoItem = FeedbackItem & {
   done?: boolean
@@ -20,7 +20,7 @@ function readAll(): TodoItem[] {
 function writeAll(items: TodoItem[]) {
   try {
     localStorage.setItem(TODO_KEY, JSON.stringify(items))
-    window.dispatchEvent(new Event('beacon-todo-changed'))
+    window.dispatchEvent(new Event('lernyra-todo-changed'))
   } catch {}
 }
 

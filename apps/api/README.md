@@ -1,5 +1,5 @@
 """
-beacon API — FastAPI backend.
+lernyra API — FastAPI backend.
 
 Local:
   source .venv/bin/activate

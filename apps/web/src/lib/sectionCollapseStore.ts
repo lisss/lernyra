@@ -1,5 +1,5 @@
 /** Bump when default open/closed rules change so old prefs don't stick. */
-const KEY = 'beacon.sections.v4'
+const KEY = 'lernyra.sections.v4'
 
 type CollapseMap = Record<string, boolean>
 

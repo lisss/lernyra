@@ -123,10 +123,10 @@ def build_role_page_html(site: str, title: str) -> str:
     slug = role_slug(title)
     reqs = requirements_for_role(title)
     esc_title = html.escape(title)
-    page_title = html.escape(f"{title} skills & learning path | Beacon")
+    page_title = html.escape(f"{title} skills & learning path | Lernyra")
     description = html.escape(
         f"See typical {title} role requirements, ranked skills, and a study plan "
-        f"with books, courses, and interview prep on Beacon."
+        f"with books, courses, and interview prep on Lernyra."
     )
     canonical = html.escape(f"{site}/roles/{slug}")
     app_link = html.escape(f"{site}/?q={title}")
@@ -168,7 +168,7 @@ def build_role_page_html(site: str, title: str) -> str:
         ),
         (
             f"How do I learn {title} skills?",
-            f"Compare {skill_list} with your CV on Beacon, then follow the books, courses, and interview prep it lines up for the gaps.",
+            f"Compare {skill_list} with your CV on Lernyra, then follow the books, courses, and interview prep it lines up for the gaps.",
         ),
     ]
     json_ld = {
@@ -181,7 +181,7 @@ def build_role_page_html(site: str, title: str) -> str:
                     f"Typical requirements and learning resources for a {title} role."
                 ),
                 "url": page_url,
-                "isPartOf": {"@type": "WebSite", "name": "Beacon", "url": f"{site}/"},
+                "isPartOf": {"@type": "WebSite", "name": "Lernyra", "url": f"{site}/"},
                 "breadcrumb": {"@id": f"{page_url}#breadcrumb"},
                 "about": {
                     "@type": "Occupation",
@@ -193,7 +193,7 @@ def build_role_page_html(site: str, title: str) -> str:
                 "@type": "BreadcrumbList",
                 "@id": f"{page_url}#breadcrumb",
                 "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "name": "Beacon", "item": f"{site}/"},
+                    {"@type": "ListItem", "position": 1, "name": "Lernyra", "item": f"{site}/"},
                     {"@type": "ListItem", "position": 2, "name": "Role guides", "item": f"{site}/roles"},
                     {"@type": "ListItem", "position": 3, "name": title, "item": page_url},
                 ],
@@ -235,14 +235,14 @@ def build_role_page_html(site: str, title: str) -> str:
   <link rel="canonical" href="{canonical}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Beacon" />
+  <meta property="og:site_name" content="Lernyra" />
   <meta property="og:title" content="{page_title}" />
   <meta property="og:description" content="{description}" />
   <meta property="og:url" content="{canonical}" />
   <meta property="og:image" content="{html.escape(site)}/og.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Beacon" />
+  <meta property="og:image:alt" content="Lernyra" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{page_title}" />
   <meta name="twitter:description" content="{description}" />
@@ -266,13 +266,13 @@ def build_role_page_html(site: str, title: str) -> str:
 <body>
   <main>
     <p class="muted">
-      <a href="{html.escape(site)}/">Beacon</a>
+      <a href="{html.escape(site)}/">Lernyra</a>
       · <a href="{html.escape(site)}/roles">Role guides</a>
       · {esc_title}
     </p>
     <h1>{esc_title}: skills &amp; learning path</h1>
     <p>
-      Beacon maps what a <strong>{esc_title}</strong> role typically needs,
+      Lernyra maps what a <strong>{esc_title}</strong> role typically needs,
       then helps you plan books, courses, certifications, and interview prep
       against your own skills or CV.
     </p>
@@ -315,17 +315,17 @@ def build_roles_index_html(site: str) -> str:
     body = "\n".join(sections)
     count = sum(len(v) for v in groups.values())
     description = html.escape(
-        f"Browse {count} Beacon role guides: typical skills for each job title, then a plan for books, courses, and interview prep."
+        f"Browse {count} Lernyra role guides: typical skills for each job title, then a plan for books, courses, and interview prep."
     )
-    page_title = html.escape("Role guides — skills by job title | Beacon")
+    page_title = html.escape("Role guides — skills by job title | Lernyra")
     json_ld = json.dumps(
         {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Beacon role guides",
+            "name": "Lernyra role guides",
             "description": f"{count} job-title guides with typical skills and a learning plan.",
             "url": f"{site}/roles",
-            "isPartOf": {"@type": "WebSite", "name": "Beacon", "url": f"{site}/"},
+            "isPartOf": {"@type": "WebSite", "name": "Lernyra", "url": f"{site}/"},
         },
         ensure_ascii=True,
     )
@@ -339,7 +339,7 @@ def build_roles_index_html(site: str) -> str:
   <link rel="canonical" href="{html.escape(site)}/roles" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Beacon" />
+  <meta property="og:site_name" content="Lernyra" />
   <meta property="og:title" content="{page_title}" />
   <meta property="og:description" content="{description}" />
   <meta property="og:url" content="{html.escape(site)}/roles" />
@@ -365,7 +365,7 @@ def build_roles_index_html(site: str) -> str:
 </head>
 <body>
   <main>
-    <p class="muted"><a href="{html.escape(site)}/">Beacon</a> · Role guides</p>
+    <p class="muted"><a href="{html.escape(site)}/">Lernyra</a> · Role guides</p>
     <h1>Role guides</h1>
     <p>{description}</p>
 {body}

@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: beacon
+    name: lernyra
     runtime: docker
     plan: free
     region: frankfurt
@@ -12,4 +12,4 @@ services:
         value: "*"
       - key: DATABASE_URL
         # Ephemeral on free tier (resets when the service sleeps/redeploys)
-        value: sqlite:////tmp/beacon.db
+        value: sqlite:////tmp/lernyra.db

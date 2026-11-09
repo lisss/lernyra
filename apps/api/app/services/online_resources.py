@@ -13,7 +13,7 @@ import httpx
 from app.core.config import get_settings
 from app.models.schemas import ResourceOut, ResourceReview
 
-USER_AGENT = "beacon/1.0 (learning insights; +https://github.com/lisss/beacon)"
+USER_AGENT = "lernyra/1.0 (learning insights; +https://github.com/lisss/lernyra)"
 TIMEOUT = 8.0
 
 _CACHE: dict[str, tuple[float, Any]] = {}

@@ -1,7 +1,7 @@
 services:
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest
-    container_name: beacon-duckdns
+    container_name: lernyra-duckdns
     restart: unless-stopped
     profiles: ["duckdns"]
     environment:
@@ -16,7 +16,7 @@ services:
 
   caddy:
     image: caddy:2-alpine
-    container_name: beacon-caddy
+    container_name: lernyra-caddy
     restart: unless-stopped
     ports:
       - "80:80"
@@ -36,16 +36,16 @@ services:
         max-file: "2"
 
   api:
-    image: ${IMAGE:-ghcr.io/lisss/beacon:latest}
-    container_name: beacon-api
+    image: ${IMAGE:-ghcr.io/lisss/lernyra:latest}
+    container_name: lernyra-api
     restart: unless-stopped
     expose:
       - "8000"
     environment:
       PORT: "8000"
       # SQLite keeps a t3.micro under ~1GB RAM; swap to Postgres later if you upgrade.
-      DATABASE_URL: sqlite:////data/beacon.db
-      API_CORS_ORIGINS: https://${DOMAIN},http://${DOMAIN},https://getmedeina.duckdns.org,http://getmedeina.duckdns.org,https://pathquire.duckdns.org,http://pathquire.duckdns.org,https://getcast.duckdns.org,http://getcast.duckdns.org,https://pathjobify.duckdns.org,http://pathjobify.duckdns.org
+      DATABASE_URL: sqlite:////data/lernyra.db
+      API_CORS_ORIGINS: https://${DOMAIN},http://${DOMAIN},https://getmedeina.duckdns.org,http://getmedeina.duckdns.org,https://pathquire.duckdns.org,http://pathquire.duckdns.org,https://getcast.duckdns.org,http://getcast.duckdns.org
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-https://${DOMAIN}}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
       REMOTIVE_ENABLED: ${REMOTIVE_ENABLED:-true}

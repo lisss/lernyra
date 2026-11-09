@@ -73,8 +73,8 @@ jobs:
           script: |
             set -euo pipefail
             APP_DIR="${{ vars.APP_DIR }}"
-            APP_DIR="${APP_DIR:-/opt/beacon}"
-            for old in /opt/medeina /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
+            APP_DIR="${APP_DIR:-/opt/lernyra}"
+            for old in /opt/beacon /opt/medeina /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
               if [ -d "$old" ] && [ ! -e "$APP_DIR" ]; then
                 sudo mv "$old" "$APP_DIR"
               fi

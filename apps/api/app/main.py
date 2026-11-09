@@ -33,14 +33,14 @@ async def lifespan(_: FastAPI):
             seed_sample_jobs(session)
     except Exception as exc:
         # Allow API to boot even if DB is temporarily unavailable
-        print(f"[beacon] DB init warning: {exc}")
+        print(f"[lernyra] DB init warning: {exc}")
     yield
 
 
 settings = get_settings()
 
 app = FastAPI(
-    title="Beacon API",
+    title="Lernyra API",
     description="Job + learning insights aggregator",
     version="0.1.0",
     lifespan=lifespan,
@@ -63,7 +63,7 @@ app.include_router(router, prefix="/api")
 
 @app.get("/api")
 def api_root() -> dict:
-    return {"name": "beacon-api", "docs": "/docs"}
+    return {"name": "lernyra-api", "docs": "/docs"}
 
 
 @app.get("/robots.txt", response_class=PlainTextResponse)
@@ -170,4 +170,4 @@ else:
 
     @app.get("/")
     def root() -> dict:
-        return {"name": "beacon-api", "docs": "/docs", "hint": "UI not bundled"}
+        return {"name": "lernyra-api", "docs": "/docs", "hint": "UI not bundled"}
