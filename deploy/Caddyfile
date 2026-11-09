@@ -4,12 +4,8 @@
 	reverse_proxy api:8000
 }
 
-# Previous DuckDNS names → canonical
+# Previous DuckDNS names → canonical (only names that still resolve)
 getmedeina.duckdns.org {
-	redir https://{$DOMAIN}{uri} permanent
-}
-
-medeina.duckdns.org {
 	redir https://{$DOMAIN}{uri} permanent
 }
 
@@ -18,13 +14,5 @@ pathquire.duckdns.org {
 }
 
 getcast.duckdns.org {
-	redir https://{$DOMAIN}{uri} permanent
-}
-
-getcasty.duckdns.org {
-	redir https://{$DOMAIN}{uri} permanent
-}
-
-pathjobify.duckdns.org {
 	redir https://{$DOMAIN}{uri} permanent
 }

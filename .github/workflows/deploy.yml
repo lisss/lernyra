@@ -102,6 +102,7 @@ jobs:
 
             docker image prune -af
             "${COMPOSE[@]}" pull
+            docker rm -f lernyra-caddy lernyra-api lernyra-duckdns beacon-caddy beacon-api beacon-duckdns 2>/dev/null || true
             "${COMPOSE[@]}" up -d --force-recreate --remove-orphans
             docker image prune -f
             "${COMPOSE[@]}" ps
