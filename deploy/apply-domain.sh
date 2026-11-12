@@ -27,7 +27,7 @@ IMAGE_REF="${IMAGE:-ghcr.io/lisss/lernyra:latest}"
 
 echo "==> Ensure app dir ${APP_DIR} (migrate older dirs if needed)"
 "${SSH[@]}" "set -e
-for old in /opt/beacon /opt/medeina /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
+for old in /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
   if [ -d \"\$old\" ] && [ ! -e '${APP_DIR}' ]; then
     sudo mv \"\$old\" '${APP_DIR}'
   fi
@@ -53,7 +53,7 @@ echo "==> Restart with duckdns profile"
   git reset --hard origin/main &&
   docker image prune -af || true
   if ! docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env pull; then
-    for fallback in ghcr.io/lisss/beacon:latest ghcr.io/lisss/medeina:latest ghcr.io/lisss/pathquire:latest; do
+    for fallback in ghcr.io/lisss/pathquire:latest ghcr.io/lisss/cast:latest; do
       if docker pull \"\$fallback\"; then
         sed -i \"s|^IMAGE=.*|IMAGE=\${fallback}|\" .env
         break
@@ -61,7 +61,7 @@ echo "==> Restart with duckdns profile"
     done
     docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env pull
   fi &&
-  docker rm -f lernyra-caddy lernyra-api lernyra-duckdns beacon-caddy beacon-api beacon-duckdns getmedeina-caddy getmedeina-api getmedeina-duckdns medeina-caddy medeina-api medeina-duckdns pathquire-caddy pathquire-api pathquire-duckdns cast-caddy cast-api cast-duckdns casty-caddy casty-api casty-duckdns jobify-caddy jobify-api jobify-duckdns 2>/dev/null || true
+  docker rm -f lernyra-caddy lernyra-api lernyra-duckdns pathquire-caddy pathquire-api pathquire-duckdns cast-caddy cast-api cast-duckdns casty-caddy casty-api casty-duckdns jobify-caddy jobify-api jobify-duckdns 2>/dev/null || true
   docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env up -d --force-recreate --remove-orphans"
 
 sed -i.bak "s|^DOMAIN=.*|DOMAIN=${DOMAIN}|" "$ENV_FILE" || true

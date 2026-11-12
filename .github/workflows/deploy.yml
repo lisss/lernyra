@@ -74,7 +74,7 @@ jobs:
             set -euo pipefail
             APP_DIR="${{ vars.APP_DIR }}"
             APP_DIR="${APP_DIR:-/opt/lernyra}"
-            for old in /opt/beacon /opt/medeina /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
+            for old in /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
               if [ -d "$old" ] && [ ! -e "$APP_DIR" ]; then
                 sudo mv "$old" "$APP_DIR"
               fi
@@ -102,7 +102,7 @@ jobs:
 
             docker image prune -af
             "${COMPOSE[@]}" pull
-            docker rm -f lernyra-caddy lernyra-api lernyra-duckdns beacon-caddy beacon-api beacon-duckdns 2>/dev/null || true
+            docker rm -f lernyra-caddy lernyra-api lernyra-duckdns 2>/dev/null || true
             "${COMPOSE[@]}" up -d --force-recreate --remove-orphans
             docker image prune -f
             "${COMPOSE[@]}" ps

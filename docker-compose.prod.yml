@@ -45,7 +45,7 @@ services:
       PORT: "8000"
       # SQLite keeps a t3.micro under ~1GB RAM; swap to Postgres later if you upgrade.
       DATABASE_URL: sqlite:////data/lernyra.db
-      API_CORS_ORIGINS: https://${DOMAIN},http://${DOMAIN},https://getmedeina.duckdns.org,http://getmedeina.duckdns.org,https://pathquire.duckdns.org,http://pathquire.duckdns.org,https://getcast.duckdns.org,http://getcast.duckdns.org
+      API_CORS_ORIGINS: https://${DOMAIN},http://${DOMAIN}
       PUBLIC_SITE_URL: ${PUBLIC_SITE_URL:-https://${DOMAIN}}
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
       REMOTIVE_ENABLED: ${REMOTIVE_ENABLED:-true}
