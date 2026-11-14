@@ -63,7 +63,7 @@ export default function HomePage() {
   return (
     <main className="relative z-10 mx-auto min-h-screen max-w-5xl px-5 pb-20 pt-10 sm:px-8">
       <header className="mb-12 flex items-baseline justify-between gap-4">
-        <p className="text-xl font-semibold tracking-tight text-[var(--ink)]">jbby</p>
+        <p className="text-xl font-semibold tracking-tight text-[var(--ink)]">lernyra</p>
         <p className="hidden text-sm text-[var(--muted)] sm:block">
           Jobs, skills, and what to learn next
         </p>

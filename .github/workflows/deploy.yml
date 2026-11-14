@@ -74,11 +74,7 @@ jobs:
             set -euo pipefail
             APP_DIR="${{ vars.APP_DIR }}"
             APP_DIR="${APP_DIR:-/opt/lernyra}"
-            for old in /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
-              if [ -d "$old" ] && [ ! -e "$APP_DIR" ]; then
-                sudo mv "$old" "$APP_DIR"
-              fi
-            done
+            mkdir -p "$APP_DIR"
             cd "$APP_DIR"
             git remote set-url origin https://github.com/${{ github.repository }}.git 2>/dev/null || true
             git fetch --depth 1 origin main

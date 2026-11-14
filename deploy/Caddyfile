@@ -3,12 +3,3 @@
 	encode gzip
 	reverse_proxy api:8000
 }
-
-# Previous DuckDNS names → canonical (only names that still resolve)
-pathquire.duckdns.org {
-	redir https://{$DOMAIN}{uri} permanent
-}
-
-getcast.duckdns.org {
-	redir https://{$DOMAIN}{uri} permanent
-}

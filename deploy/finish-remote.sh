@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ENV_FILE="$ROOT/deploy/.provisioned.env"
-KEY_PATH="${KEY_PATH:-$HOME/.ssh/jobify-ec2}"
+KEY_PATH="${KEY_PATH:-$HOME/.ssh/lernyra-ec2}"
 
 if [[ ! -f "$ENV_FILE" ]]; then
   echo "Missing $ENV_FILE — run ./deploy/provision-ec2.sh first"

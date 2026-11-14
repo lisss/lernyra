@@ -9,7 +9,7 @@ const sans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "jbby — jobs, skills, and what to learn next",
+  title: "lernyra — jobs, skills, and what to learn next",
   description:
     "Aggregate jobs, spot skill gaps from your CV, and get books, courses, and a study roadmap.",
 };

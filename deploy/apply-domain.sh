@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ENV_FILE="$ROOT/deploy/.provisioned.env"
-KEY_PATH="${KEY_PATH:-$HOME/.ssh/jobify-ec2}"
+KEY_PATH="${KEY_PATH:-$HOME/.ssh/lernyra-ec2}"
 
 : "${DUCKDNS_SUBDOMAIN:?set DUCKDNS_SUBDOMAIN (e.g. lernyra)}"
 : "${DUCKDNS_TOKEN:?set DUCKDNS_TOKEN}"
@@ -25,15 +25,8 @@ echo
 APP_DIR="${APP_DIR:-/opt/lernyra}"
 IMAGE_REF="${IMAGE:-ghcr.io/lisss/lernyra:latest}"
 
-echo "==> Ensure app dir ${APP_DIR} (migrate older dirs if needed)"
-"${SSH[@]}" "set -e
-for old in /opt/pathquire /opt/casty /opt/cast /opt/jobify; do
-  if [ -d \"\$old\" ] && [ ! -e '${APP_DIR}' ]; then
-    sudo mv \"\$old\" '${APP_DIR}'
-  fi
-done
-mkdir -p '${APP_DIR}'
-"
+echo "==> Ensure app dir ${APP_DIR}"
+"${SSH[@]}" "mkdir -p '${APP_DIR}'"
 
 echo "==> Rewrite remote .env DOMAIN=${DOMAIN} (dir ${APP_DIR})"
 "${SSH[@]}" "cat > '${APP_DIR}/.env'" <<EOF
@@ -52,16 +45,8 @@ echo "==> Restart with duckdns profile"
   git fetch --depth 1 origin main &&
   git reset --hard origin/main &&
   docker image prune -af || true
-  if ! docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env pull; then
-    for fallback in ghcr.io/lisss/pathquire:latest ghcr.io/lisss/cast:latest; do
-      if docker pull \"\$fallback\"; then
-        sed -i \"s|^IMAGE=.*|IMAGE=\${fallback}|\" .env
-        break
-      fi
-    done
-    docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env pull
-  fi &&
-  docker rm -f lernyra-caddy lernyra-api lernyra-duckdns pathquire-caddy pathquire-api pathquire-duckdns cast-caddy cast-api cast-duckdns casty-caddy casty-api casty-duckdns jobify-caddy jobify-api jobify-duckdns 2>/dev/null || true
+  docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env pull &&
+  docker rm -f lernyra-caddy lernyra-api lernyra-duckdns 2>/dev/null || true
   docker compose -f docker-compose.prod.yml --profile duckdns --env-file .env up -d --force-recreate --remove-orphans"
 
 sed -i.bak "s|^DOMAIN=.*|DOMAIN=${DOMAIN}|" "$ENV_FILE" || true

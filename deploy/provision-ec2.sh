@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-KEY_PATH="${KEY_PATH:-$HOME/.ssh/jobify-ec2}"
+KEY_PATH="${KEY_PATH:-$HOME/.ssh/lernyra-ec2}"
 KEY_NAME="${KEY_NAME:-lernyra}"
 REGION="${AWS_DEFAULT_REGION:-us-east-1}"
 INSTANCE_TYPE="${INSTANCE_TYPE:-t3.micro}"
@@ -11,7 +11,7 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
 if [[ ! -f "$KEY_PATH" || ! -f "$KEY_PATH.pub" ]]; then
-  echo "Missing $KEY_PATH — generate with: ssh-keygen -t ed25519 -f ~/.ssh/jobify-ec2 -N ''"
+  echo "Missing $KEY_PATH — generate with: ssh-keygen -t ed25519 -f ~/.ssh/lernyra-ec2 -N ''"
   exit 1
 fi
 
