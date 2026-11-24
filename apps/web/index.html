@@ -29,10 +29,11 @@
       property="og:description"
       content="Pick a position and your skills. See typical requirements, gaps, books, courses, and a study roadmap."
     />
-    <meta property="og:image" content="https://lernyra.duckdns.org/og.svg" />
+    <meta property="og:image" content="https://lernyra.duckdns.org/og.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Lernyra" />
+    <meta property="og:image:alt" content="Lernyra — role requirements and learning paths" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Lernyra — role requirements &amp; learning paths" />
@@ -40,25 +41,47 @@
       name="twitter:description"
       content="Map any role to skills, gaps, and a trusted study plan."
     />
-    <meta name="twitter:image" content="https://lernyra.duckdns.org/og.svg" />
+    <meta name="twitter:image" content="https://lernyra.duckdns.org/og.png" />
+    <meta name="twitter:image:alt" content="Lernyra — role requirements and learning paths" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "WebSite",
+            "@type": "Organization",
+            "@id": "https://lernyra.duckdns.org/#organization",
             "name": "Lernyra",
             "url": "https://lernyra.duckdns.org/",
-            "description": "Role requirements, CV skill gaps, and personalised learning paths with books, courses, and interview prep.",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://lernyra.duckdns.org/?q={search_term_string}",
-              "query-input": "required name=search_term_string"
+            "logo": "https://lernyra.duckdns.org/logo.svg",
+            "description": "Lernyra shows typical skills for a job title, compares them with your CV, and suggests books, courses, and interview prep."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://lernyra.duckdns.org/#website",
+            "name": "Lernyra",
+            "url": "https://lernyra.duckdns.org/",
+            "description": "Role requirements, CV skill gaps, and learning paths with books, courses, and interview prep.",
+            "publisher": { "@id": "https://lernyra.duckdns.org/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://lernyra.duckdns.org/#webpage",
+            "url": "https://lernyra.duckdns.org/",
+            "name": "Lernyra — role requirements, skills gaps and learning paths",
+            "description": "Lernyra shows what a job role typically needs, compares it to your CV or skills, and builds a study plan with trusted books, courses, certifications, and interview prep.",
+            "isPartOf": { "@id": "https://lernyra.duckdns.org/#website" },
+            "about": { "@id": "https://lernyra.duckdns.org/#app" },
+            "inLanguage": "en",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://lernyra.duckdns.org/og.png"
             }
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://lernyra.duckdns.org/#app",
             "name": "Lernyra",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Web",
@@ -70,10 +93,42 @@
             "description": "Free tool to compare job role requirements with your skills and get a learning roadmap."
           },
           {
-            "@type": "Organization",
-            "name": "Lernyra",
-            "url": "https://lernyra.duckdns.org/",
-            "logo": "https://lernyra.duckdns.org/logo.svg"
+            "@type": "FAQPage",
+            "@id": "https://lernyra.duckdns.org/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do I see what skills a job needs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pick a title on Lernyra, or open its role guide. Each guide lists the skills that title usually requires, with the core skills called out first."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does Lernyra build a learning path?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Add the skills you already have, or upload a CV. Lernyra compares them with the role and lines up books, courses, certifications, and interview prep for the gaps."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I compare a role with my CV?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Upload a PDF or text CV, or paste skills. Lernyra keeps the skills that match the role you picked and uses the gaps for the study plan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which job titles have a guide?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "There is a guide for common software titles, including Software Engineer, Python Developer, Frontend Engineer, Data Engineer, DevOps Engineer, and Machine Learning Engineer. The full list is on the role guides page."
+                }
+              }
+            ]
           }
         ]
       }
@@ -89,23 +144,51 @@
   <body>
     <div id="root"></div>
     <noscript>
-      <main style="max-width:40rem;margin:2rem auto;padding:0 1rem;font-family:system-ui,sans-serif">
-        <h1>Lernyra — role requirements &amp; learning paths</h1>
-        <p>
-          Lernyra helps you see what a job role typically needs, compare that to your
-          CV or skills, and plan books, courses, certifications, and interview prep.
-        </p>
-        <p>
-          Enable JavaScript to use the interactive planner, or browse
-          <a href="/roles">all role guides</a>, including
-          <a href="/roles/python-developer">Python Developer</a>,
-          <a href="/roles/software-engineer">Software Engineer</a>,
-          and
-          <a href="/roles/data-engineer">Data Engineer</a>.
-        </p>
-        <p><a href="/sitemap.xml">Sitemap</a></p>
-      </main>
+      <p style="max-width:40rem;margin:1rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif">
+        The planner needs JavaScript. Role guides work without it:
+        <a href="/roles">all role guides</a>.
+      </p>
     </noscript>
+    <section id="about-lernyra" class="site-seo">
+      <div class="site-seo-inner">
+        <h2>How to turn a job title into a study plan</h2>
+        <p class="lede">
+          Lernyra is a free planner for role requirements and skill gaps. It does not list job openings.
+        </p>
+        <ol>
+          <li>Choose a role, such as Software Engineer, Python Developer, or Data Engineer.</li>
+          <li>Add skills you already have, or upload a CV so matching skills are filled in.</li>
+          <li>Read the gaps, then open the books, courses, certifications, and interview prep lined up for them.</li>
+        </ol>
+
+        <h2>Questions people ask</h2>
+        <h3>How do I see what skills a job needs?</h3>
+        <p>Pick a title on Lernyra, or open its role guide. Each guide lists the skills that title usually requires, with the core skills called out first.</p>
+        <h3>How does Lernyra build a learning path?</h3>
+        <p>Add the skills you already have, or upload a CV. Lernyra compares them with the role and lines up books, courses, certifications, and interview prep for the gaps.</p>
+        <h3>Can I compare a role with my CV?</h3>
+        <p>Yes. Upload a PDF or text CV, or paste skills. Lernyra keeps the skills that match the role you picked and uses the gaps for the study plan.</p>
+        <h3>Which job titles have a guide?</h3>
+        <p>There is a guide for common software titles, including Software Engineer, Python Developer, Frontend Engineer, Data Engineer, DevOps Engineer, and Machine Learning Engineer. The full list is on the role guides page.</p>
+
+        <h2>Skills and requirements by job title</h2>
+        <p>Each guide is a public page for one title: the skills employers usually expect, what the work looks like, and what to learn first.</p>
+        <ul>
+          <li><a href="/roles/software-engineer">Software Engineer skills and requirements</a></li>
+          <li><a href="/roles/python-developer">Python Developer skills and requirements</a></li>
+          <li><a href="/roles/frontend-engineer">Frontend Engineer skills and requirements</a></li>
+          <li><a href="/roles/backend-engineer">Backend Engineer skills and requirements</a></li>
+          <li><a href="/roles/data-engineer">Data Engineer skills and requirements</a></li>
+          <li><a href="/roles/data-scientist">Data Scientist skills and requirements</a></li>
+          <li><a href="/roles/devops-engineer">DevOps Engineer skills and requirements</a></li>
+          <li><a href="/roles/machine-learning-engineer">Machine Learning Engineer skills and requirements</a></li>
+          <li><a href="/roles">Browse all role guides</a></li>
+        </ul>
+      </div>
+    </section>
+    <script>
+      document.getElementById('about-lernyra').hidden = location.pathname !== '/'
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

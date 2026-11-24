@@ -29,6 +29,7 @@ services:
       PORT: "8000"
       DATABASE_URL: postgresql+psycopg://lernyra:lernyra@db:5432/lernyra
       API_CORS_ORIGINS: http://localhost:8000,http://127.0.0.1:8000,http://localhost:3000,http://127.0.0.1:3000
+      PUBLIC_SITE_URL: http://localhost:8000
       REMOTIVE_ENABLED: "true"
       YOUTUBE_API_KEY: ${YOUTUBE_API_KEY:-}
       GOOGLE_BOOKS_API_KEY: ${GOOGLE_BOOKS_API_KEY:-}

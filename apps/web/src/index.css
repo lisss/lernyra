@@ -87,6 +87,69 @@ button:disabled,
   animation: fade-in 0.35s ease-out both;
 }
 
+.site-seo {
+  max-width: 64rem;
+  margin: 3rem auto 0;
+  padding: 0 1.25rem 5rem;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .site-seo {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.site-seo-inner {
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+
+.site-seo h2 {
+  margin: 2.25rem 0 0.6rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--title);
+}
+
+.site-seo-inner > h2:first-child {
+  margin-top: 0;
+}
+
+.site-seo h3 {
+  margin: 1.15rem 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--title-soft);
+}
+
+.site-seo p,
+.site-seo li {
+  max-width: 42rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.site-seo .lede {
+  color: var(--muted);
+}
+
+.site-seo ul,
+.site-seo ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.site-seo li {
+  margin: 0.4rem 0;
+}
+
+.site-seo a {
+  text-underline-offset: 3px;
+}
+
 .logo-heading {
   margin: 0;
   font-size: inherit;

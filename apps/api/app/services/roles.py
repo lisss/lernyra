@@ -363,6 +363,17 @@ _MINOR_REQUIREMENTS = frozenset(
 )
 
 
+def requirement_family(role: str) -> tuple[str, ...] | None:
+    """Keyword tuple of the first matching role family, or None."""
+    needle = (role or "").strip().lower()
+    if not needle:
+        return None
+    for keys, _skills in _ROLE_REQUIREMENTS:
+        if any(k in needle for k in keys):
+            return keys
+    return None
+
+
 def requirements_for_role(role: str) -> list[tuple[str, float]]:
     """
     Return (skill, importance%) for a position title.
@@ -372,11 +383,13 @@ def requirements_for_role(role: str) -> list[tuple[str, float]]:
     if not needle:
         return []
 
+    family = requirement_family(role)
     matched: list[tuple[str, float]] = []
-    for keys, skills in _ROLE_REQUIREMENTS:
-        if any(k in needle for k in keys):
-            matched = list(skills)
-            break
+    if family is not None:
+        for keys, skills in _ROLE_REQUIREMENTS:
+            if keys == family:
+                matched = list(skills)
+                break
 
     # Merge skills implied by the title wording (e.g. "Python" in the name)
     titled = extract_skills(role)

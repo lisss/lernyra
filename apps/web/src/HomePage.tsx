@@ -20,7 +20,7 @@ import {
   suggestRoles,
 } from '@/lib/api'
 import { InsightsPanel } from '@/components/InsightsPanel'
-import { Logo, LernyraMark } from '@/components/Logo'
+import { Logo, LernyraMark, RoleGuidesMark } from '@/components/Logo'
 import { Typeahead } from '@/components/Typeahead'
 import {
   clearCvFile,
@@ -333,27 +333,34 @@ export function HomePage() {
   }
 
   return (
-    <main className="relative z-10 mx-auto min-h-screen max-w-5xl px-5 pb-20 pt-10 sm:px-8">
+    <main className="relative z-10 mx-auto max-w-5xl px-5 pb-2 pt-10 sm:px-8">
       <header className="mb-12 flex flex-wrap items-center justify-between gap-4">
-        <Logo asHeading />
-        <Link to="/learning-list" className="todo-link">
-          <LernyraMark className="todo-link-mark" />
-          <span className="todo-link-label">Learning list</span>
-          {todoCount > 0 ? (
-            <span className="todo-link-count" aria-label={`${todoCount} open items`}>
-              {todoCount}
-            </span>
-          ) : null}
-        </Link>
+        <Logo />
+        <nav className="flex flex-wrap items-center gap-x-5 gap-y-2" aria-label="Site">
+          <a href="/roles" className="todo-link">
+            <RoleGuidesMark className="todo-link-mark" />
+            <span className="todo-link-label">Role guides</span>
+          </a>
+          <Link to="/learning-list" className="todo-link">
+            <LernyraMark className="todo-link-mark" />
+            <span className="todo-link-label">Learning list</span>
+            {todoCount > 0 ? (
+              <span className="todo-link-count" aria-label={`${todoCount} open items`}>
+                {todoCount}
+              </span>
+            ) : null}
+          </Link>
+        </nav>
       </header>
 
       <section className="panel px-6 py-9 sm:px-9 sm:py-11">
-        <p className="whitespace-nowrap text-[clamp(0.95rem,2.9vw,1.75rem)] font-semibold tracking-tight text-[var(--brand)]">
-          See what a role needs — and what to learn next
-        </p>
-        <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-[var(--muted)] sm:text-base">
-          Pick a position and your skills. We look up books, courses, and
-          interview material online for that mix.
+        <h1 className="m-0 max-w-3xl text-[clamp(1.35rem,3vw,1.85rem)] font-semibold leading-tight tracking-tight text-[var(--brand)]">
+          See the skills a role needs — and what to learn next
+        </h1>
+        <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[var(--muted)] sm:text-base">
+          Pick a job title and the skills you already have. Lernyra shows the
+          usual requirements, the gaps against your CV, and a study plan with
+          books, courses, and interview prep.
         </p>
 
         <form onSubmit={onSubmit} className="relative mt-8 space-y-4">
@@ -514,41 +521,6 @@ export function HomePage() {
         </div>
       )}
 
-      <footer className="mt-16 border-t border-[var(--line)] pt-8 text-sm text-[var(--muted)]">
-        <p className="font-medium text-[var(--title-soft)]">Popular role guides</p>
-        <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-          {[
-            ['software-engineer', 'Software Engineer'],
-            ['python-developer', 'Python Developer'],
-            ['frontend-engineer', 'Frontend Engineer'],
-            ['data-engineer', 'Data Engineer'],
-            ['devops-engineer', 'DevOps Engineer'],
-            ['ml-engineer', 'ML Engineer'],
-          ].map(([slug, label]) => (
-            <li key={slug}>
-              <a
-                href={`/roles/${slug}`}
-                className="text-[var(--link)] underline decoration-[var(--link-underline)] underline-offset-2 hover:text-[var(--accent)]"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a
-              href="/roles"
-              className="text-[var(--link)] underline decoration-[var(--link-underline)] underline-offset-2 hover:text-[var(--accent)]"
-            >
-              All role guides
-            </a>
-          </li>
-        </ul>
-        <p className="mt-4 max-w-2xl leading-relaxed">
-          Lernyra is a free career learning planner: compare job role requirements to your
-          skills or CV, then get books, courses, certifications, and interview prep in one
-          roadmap.
-        </p>
-      </footer>
     </main>
   )
 }

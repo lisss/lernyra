@@ -47,4 +47,9 @@ export function setDocumentMeta({
   ogDesc?.setAttribute('content', desc)
   const ogUrl = document.querySelector('meta[property="og:url"]')
   ogUrl?.setAttribute('content', canonicalHref)
+
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]')
+  twitterTitle?.setAttribute('content', title)
+  const twitterDesc = document.querySelector('meta[name="twitter:description"]')
+  twitterDesc?.setAttribute('content', desc)
 }

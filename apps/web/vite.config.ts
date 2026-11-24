@@ -12,5 +12,12 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    // Role guides, sitemap, and robots are rendered by the API, same as production.
+    proxy: {
+      '/roles': 'http://127.0.0.1:8001',
+      '/sitemap.xml': 'http://127.0.0.1:8001',
+      '/robots.txt': 'http://127.0.0.1:8001',
+      '/llms.txt': 'http://127.0.0.1:8001',
+    },
   },
 })

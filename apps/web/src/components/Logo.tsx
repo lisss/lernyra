@@ -31,6 +31,29 @@ export function LernyraMark({ className = '' }: { className?: string }) {
   )
 }
 
+export function RoleGuidesMark({ className = '' }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 40 40"
+      fill="none"
+      aria-hidden
+      className={className}
+    >
+      <g
+        stroke="currentColor"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M20 11c-2.6-1.8-6.6-2.5-11-1.6v17.4c4.4-.9 8.4-.2 11 1.6" />
+        <path d="M20 11c2.6-1.8 6.6-2.5 11-1.6v17.4c-4.4-.9-8.4-.2-11 1.6" />
+        <path d="M20 11v17.4" />
+      </g>
+    </svg>
+  )
+}
+
 export function Logo({
   className = '',
   title = 'Lernyra',

@@ -14,6 +14,7 @@ from app.models import job as _job  # noqa: F401 — register table
 from app.models import resource_feedback as _resource_feedback  # noqa: F401
 from app.services.jobs import seed_sample_jobs
 from app.services.seo import (
+    build_llms_txt,
     build_robots_txt,
     build_role_page_html,
     build_roles_index_html,
@@ -61,6 +62,13 @@ app.add_middleware(
 app.include_router(router, prefix="/api")
 
 
+@app.middleware("http")
+async def content_language(request, call_next):  # type: ignore[no-untyped-def]
+    response = await call_next(request)
+    response.headers.setdefault("Content-Language", "en")
+    return response
+
+
 @app.get("/api")
 def api_root() -> dict:
     return {"name": "lernyra-api", "docs": "/docs"}
@@ -69,6 +77,15 @@ def api_root() -> dict:
 @app.get("/robots.txt", response_class=PlainTextResponse)
 def robots_txt() -> str:
     return build_robots_txt(settings.site_url)
+
+
+@app.get("/llms.txt", response_class=PlainTextResponse)
+def llms_txt() -> Response:
+    return Response(
+        content=build_llms_txt(settings.site_url),
+        media_type="text/plain; charset=utf-8",
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
 
 
 @app.get("/sitemap.xml")
